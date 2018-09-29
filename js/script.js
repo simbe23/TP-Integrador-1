@@ -158,7 +158,11 @@ $(document).ready(function(){
 				mostrarLista(offset,hasta);
 				mostrarBotones(nPag);
 
-
+					$('#botones').click(function(){
+						for (var i = 0; i < 4; i++) {
+							$("#box").remove();
+						}
+					});
 						// Activar el primer botón
 						$('#botones button:first-child').addClass('active');
 						// Poner oyentes a cada botón
