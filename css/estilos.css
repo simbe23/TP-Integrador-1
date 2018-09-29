@@ -34,7 +34,7 @@ html, body {
     height: 100%;
 }
 
-body {overflow-y: hidden;}
+/* body {overflow-y: hidden;} */
 
 
 
@@ -98,7 +98,7 @@ body {overflow-y: hidden;}
 
 #next-matches {
   position:relative;
-  top:30%;
+  top:15%;
   text-align: center;
   z-index:50;
 }
@@ -208,3 +208,102 @@ body {overflow-y: hidden;}
     margin: 20px 0px 0px;
     outline: rgb(255, 255, 255) none 0px;
 }/*#H1_7*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#box {
+  border-radius: 4px 4px 4px 4px;
+  -moz-border-radius: 4px 4px 4px 4px;
+  -webkit-border-radius: 4px 4px 4px 4px;
+  border: 2px solid #fffcff;
+  height: 120px;
+  z-index: 99999;
+  width: 60%;
+  display: inline-block;
+  text-align: center;
+  margin-top:15px;
+}
+
+#resul1{border-radius: 0px 0px 0px 0px;
+-moz-border-radius: 0px 0px 0px 0px;
+-webkit-border-radius: 0px 0px 0px 0px;
+border: 2px solid #fffcff;
+height: 40px;
+z-index:99999;
+width: 5%;
+display: inline-block;;
+margin-top: 1%;}
+
+#resul2{border-radius: 0px 0px 0px 0px;
+-moz-border-radius: 0px 0px 0px 0px;
+-webkit-border-radius: 0px 0px 0px 0px;
+border: 2px solid #fffcff;
+height: 40px;
+z-index:99999;
+width: 5%;
+display: inline-block;;
+margin-top: 1%;}
+
+
+#liga {
+  border-radius: 0px 0px 0px 0px;
+  -moz-border-radius: 0px 0px 0px 0px;
+  -webkit-border-radius: 0px 0px 0px 0px;
+  height: 20px;
+  z-index:99999;
+  width: 80%;
+  display: block;
+  margin-top: 1%;
+  margin-left: 1.4%;
+}
+
+#equipo1{
+  border-radius: 0px 0px 0px 0px;
+  -moz-border-radius: 0px 0px 0px 0px;
+  -webkit-border-radius: 0px 0px 0px 0px;
+  height: 40px;
+  z-index:99999;
+  width: 43%;
+  display: inline-block;
+  margin-top: 1%;
+}
+
+#equipo2{
+  border-radius: 0px 0px 0px 0px;
+  -moz-border-radius: 0px 0px 0px 0px;
+  -webkit-border-radius: 0px 0px 0px 0px;
+  height: 40px;
+  z-index:99999;
+  width: 43%;
+  display: inline-block;
+  margin-top: 1%;
+}
+
+
+#hora{
+  border-radius: 0px 0px 0px 0px;
+  -moz-border-radius: 0px 0px 0px 0px;
+  -webkit-border-radius: 0px 0px 0px 0px;
+  height: 20px;
+  z-index:99999;
+  width: 80%;
+  display: block;
+  margin-left: 1.4%;
+}
