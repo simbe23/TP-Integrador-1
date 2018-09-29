@@ -117,16 +117,22 @@ $(document).ready(function(){
 				var hasta = pag * xPag;
 
 				function mostrarLista(desde,hasta){
-						var lista = '';
+						var section = document.getElementById('next-matches');
 						for(var i = desde; i < hasta; i++){
-								var fila = '';
-								fila += "<tr>";
-								fila += "<td>"+datos.matches[i].homeTeam.name+"</td>";
-								fila += "<td>"+datos.matches[i].awayTeam.name+"</td>";
-								fila += "</tr>";
-								lista += fila;
+								var myBox = document.createElement ('box');
+								$(myBox).attr('id','box');
+								var myLiga = document.createElement ('liga');
+								$(myLiga).attr('id','liga');
+								myLiga.textContent = datos.matches[i].competition.name;
+								myBox.appendChild(myLiga);
+								// fila += "<td>"+datos.matches[i].homeTeam.name+"</td>";
+								// fila += "<td>"+datos.matches[i].awayTeam.name+"</td>";
+								// fila += "</tr>";
+								// lista += fila;
+								section.appendChild(myBox);
 						}
-						$('#listado').html(lista);
+
+
 				}
 
 				function mostrarBotones(t){
