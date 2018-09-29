@@ -125,11 +125,51 @@ $(document).ready(function(){
 								$(myLiga).attr('id','liga');
 								myLiga.textContent = datos.matches[i].competition.name;
 								myBox.appendChild(myLiga);
-								// fila += "<td>"+datos.matches[i].homeTeam.name+"</td>";
-								// fila += "<td>"+datos.matches[i].awayTeam.name+"</td>";
-								// fila += "</tr>";
-								// lista += fila;
+								var myEquipo1 = document.createElement ('equipo1');
+								$(myEquipo1).attr('id','equipo1');
+								myEquipo1.textContent = datos.matches[i].homeTeam.name;
+								myBox.appendChild(myEquipo1);
+
+
+
+								var myResul1 = document.createElement('resul1');
+								$(myResul1).attr('id','resul1');
+								myResul1.textContent=datos.matches[i].score.fullTime.homeTeam;
+								// myResul1.textContent = '-';
+								myBox.appendChild(myResul1);
+
+
+
+								var myResul2 = document.createElement('resul2');
+								$(myResul2).attr('id','resul2');
+								myResul2.textContent=datos.matches[i].score.fullTime.awayTeam;
+								// myResul2.textContent = '-';
+								myBox.appendChild(myResul2);
+
+
+
+
+
+
+								var myEquipo2 = document.createElement ('equipo2');
+								$(myEquipo2).attr('id','equipo2');
+								myEquipo2.textContent = datos.matches[i].awayTeam.name;
+								myBox.appendChild(myEquipo2);
+								var myFecha = document.createElement('fecha');
+								$(myFecha).attr('id','fecha');
+								var fecha = datos.matches[i].utcDate
+								fecha = fecha.substr(0,10) + '   '
+								var hora = parseInt (datos.matches[i].utcDate.substr(-9,2))-3;
+								var hora2 = datos.matches[i].utcDate.substr(-7,3) +' hs';
+								fecha = fecha + hora + hora2;
+								myFecha.textContent = fecha;
+								myBox.appendChild(myFecha);
+
+
+
+
 								section.appendChild(myBox);
+
 						}
 
 
@@ -157,6 +197,7 @@ $(document).ready(function(){
 
 				mostrarLista(offset,hasta);
 				mostrarBotones(nPag);
+
 
 					$('#botones').click(function(){
 						for (var i = 0; i < 4; i++) {
