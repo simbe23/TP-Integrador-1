@@ -283,7 +283,7 @@ $(document).ready(function(){
 
 
 
-				})
+				})				//DEVUELVE LAS COMPETENCIAS PARA DROPDOWN
 
 
 
