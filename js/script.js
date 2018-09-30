@@ -243,7 +243,47 @@ $(document).ready(function(){
 	                 }
 
 
+		 var settings2 = {				//CONECCION CON JSON API
+ 			"async": true,
+ 			"crossDomain": true,
+ 			"url": "http://api.football-data.org/v2/competitions",
+ 			"method": "GET",
+ 			"headers": {
+ 			"X-Auth-Token": "caec1c63629745d684eabb0a0121f048",
+ 			}
+			}
 
+
+		$.ajax(settings2).done(function (datos2) {
+				 let dropdown = $('#competition-dropdown');
+
+				dropdown.empty();
+
+				dropdown.append('<option selected="true" disabled>Seleccionar liga</option>');
+				dropdown.prop('selectedIndex', 0);
+					for (var i = 0; i < datos2.count; i++) {
+						if (datos2.competitions[i].plan == 'TIER_ONE') {
+							// console.log(datos2.competitions[i].name)
+
+							var option = document.createElement ('option');
+							option.textContent = datos2.competitions[i].name;
+							option.value = datos2.competitions[i].name;
+
+							dropdown.append( new Option(option.textContent,option.value) );
+						//	dropdown.add(option);
+
+
+						}
+
+					}
+
+
+
+
+
+
+
+				})
 
 
 
