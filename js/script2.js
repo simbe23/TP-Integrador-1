@@ -76,10 +76,6 @@ $(document).ready(function(){
     });
 
 
-
-
-
-
     function setBindings() {
       if (on_index == true) {
                 $("#navbar a").click(function(e){
