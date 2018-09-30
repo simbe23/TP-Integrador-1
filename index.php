@@ -75,8 +75,12 @@
       <section id="search1">
         <div id="overlay">
           <div id="search">
-            <input type="input" id="buscador" value="">
-            <select id="competition-dropdown" id="competition">
+            <form class="form" action="search.html" method="get">
+              <input type="input" id="buscador" value="">
+              <select id="competition-dropdown" id="competition">
+              <input type="submit" value="Submit">
+            </form>
+
             </select>
           </div>
         </div>
