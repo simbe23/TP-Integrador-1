@@ -96,7 +96,7 @@ $(document).ready(function(){
 
 
 
-		var settings = {				//CONECCION CON JSON API
+		var settings = {				//CONECCION CON JSON API PARA PROXIMOS PARTIDOS
 			"async": true,
 			"crossDomain": true,
 			"url": "http://api.football-data.org/v2/matches",
@@ -220,12 +220,6 @@ $(document).ready(function(){
 						}})
 
 
-
-
-
-
-
-
 			// Activar el primer botón
 	                 $('#botones button:first-child').addClass('active');
 
@@ -243,17 +237,17 @@ $(document).ready(function(){
 	                 }
 
 
-		 var settings2 = {				//CONECCION CON JSON API
- 			"async": true,
- 			"crossDomain": true,
- 			"url": "http://api.football-data.org/v2/competitions",
- 			"method": "GET",
- 			"headers": {
- 			"X-Auth-Token": "caec1c63629745d684eabb0a0121f048",
- 			}
+
+
+	 var settings2 = {				//CONECCION CON JSON API
+			"async": true,
+			"crossDomain": true,
+			"url": "http://api.football-data.org/v2/competitions",
+			"method": "GET",
+			"headers": {
+			"X-Auth-Token": "caec1c63629745d684eabb0a0121f048",
 			}
-
-
+		}
 		$.ajax(settings2).done(function (datos2) {
 				 let dropdown = $('#competition-dropdown');
 
@@ -286,7 +280,7 @@ $(document).ready(function(){
 				})				//DEVUELVE LAS COMPETENCIAS PARA DROPDOWN
 
 
-
+			
 
 
 

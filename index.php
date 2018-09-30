@@ -75,11 +75,10 @@
       <section id="search1">
         <div id="overlay">
           <div id="search">
-            <form class="form" action="search.php" method="get">
+            <form class="form" action="search.php" method="post">
               <input type="text" id="buscador" name="team" value="">
               <select name="drop" id="competition-dropdown" id="competition">
               </select>
-              <input type="submit" value="Submit">
               <br><br>
               <input type="checkbox" name="pganados" value="1" id="checkbox">Partidos ganados
               <br>
@@ -91,6 +90,7 @@
               <br>
               <input type="checkbox" name="pnofinalizados" value="5" id="checkbox">Partidos no finalizados
               <br>
+              <input type="submit" value="Submit">
             </form>
 
           </div>
@@ -136,34 +136,6 @@
     });
   }
     </script>
-
-
-
-    <!-- <body>
-
-    <div class="container">
-
-        <div class="row">
-            <div class="page-header">
-                <h1>Pruebas de JSON con paginador</h1>
-            </div>
-
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Local</th>
-                        <th>Visitante</th>
-                    </tr>
-                </thead>
-                <tbody id="listado">
-                </tbody>
-            </table>
-            <div id="botones" class="btn-group btn-group-xs"
-                 role="group" arial-label="grupo">
-            </div>
-        </div>
-
-    </div> -->
 
 
 </html>
