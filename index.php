@@ -76,8 +76,8 @@
         <div id="overlay">
           <div id="search">
             <form class="form" action="search.php" method="get">
-              <input type="input" id="buscador" value="">
-              <select id="competition-dropdown" id="competition">
+              <input type="text" id="buscador" name="team" value="">
+              <select name="drop" id="competition-dropdown" id="competition">
               </select>
               <input type="submit" value="Submit">
               <br><br>
