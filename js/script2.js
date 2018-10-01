@@ -92,7 +92,7 @@ $(document).ready(function(){
  })
 
 
-function llenar (nombre){
+function llenar (nombre, finalizados, nofinalizados, competicion){
   var settings3 = {				//CONECCION CON JSON API
     "async": true,
     "crossDomain": true,
@@ -104,10 +104,12 @@ function llenar (nombre){
   }
 
   $.ajax(settings3).done(function (datos3) {
+
       for (var i = 0; i < datos3.count; i++) {
          if (datos3.teams[i].name.toLowerCase().includes(nombre) == true) {
            var id = datos3.teams[i].id;
-           var url = "http://api.football-data.org/v2/teams/"+ id +"/matches/"
+
+           var url = "http://api.football-data.org/v2/teams/"+ id +"/matches?status=FINISHED"
            var settings4 = {				//CONECCION CON JSON API
              "async": true,
              "crossDomain": true,

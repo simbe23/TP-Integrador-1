@@ -50,7 +50,15 @@
       var nombre = '<?php echo $_POST["team"]; ?>'
       nombre = nombre.toLowerCase();
 
-      llenar(nombre)
+      <?php if (isset($_POST["pfinalizados"])) {
+       echo $_POST["pfinalizados"];
+        }
+        else {
+          echo "no se puede";
+        } ?>
+
+
+      llenar(nombre, finalizados, nofinalizados, competicion)
 
 
 
