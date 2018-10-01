@@ -76,16 +76,16 @@ $(document).ready(function(){
     });
 
 
-    function setBindings() {
-      if (on_index == true) {
-                $("#navbar a").click(function(e){
-                      e.preventDefault();
-                      var sectionID = e.currentTarget.id + "1";
-                      $('body, html').animate({
-                        scrollTop: $("#" + sectionID).offset().top
-                      }, 600)
-                  })
-      }};
+    // function setBindings() {
+    //   if (on_index == true) {
+    //             $("#navbar a2").click(function(e){
+    //                   e.preventDefault();
+    //                   var sectionID = e.currentTarget.id + "1";
+    //                   $('body, html').animate({
+    //                     scrollTop: $("#" + sectionID).offset().top
+    //                   }, 600)
+    //               })
+    //   }};
 
 
 
@@ -223,7 +223,7 @@ else {
           for (var i = 0; i < datos3.count; i++) {
              if (datos3.teams[i].name.toLowerCase().includes(nombre) == true) {
                var id = datos3.teams[i].id;
-              
+
                if ((pfinalizados == '1') && (pnofinalizados == '0')) {
                  var url = "http://api.football-data.org/v2/teams/"+ id +"/matches?status=FINISHED"
                }

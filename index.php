@@ -17,7 +17,7 @@
     <div class="topnav" id="myTopnav">
       <a href="#home1" id="home" class="active">Home</a>
       <a href="#next1" id="next">Proximos</a>
-      <a href="#search1" id="buscar">Buscar</a>
+      <a href="#buscar1" id="buscar">Buscar</a>
       <a href="#map1" id="map">Contacto</a>
       <a href="javascript:void(0);" class="icon" onclick="expandir()">
         <i class="fa fa-bars"></i>
@@ -31,7 +31,7 @@
      <section id="SECTION">
       <section id="home1">
       	<div id="overlay">
-          <!-- <div id="DIV_3">
+          <div id="DIV_3">
         		<div id="DIV_4">
         			<div id="DIV_5">
         				<h6 id="H6_6">
@@ -41,7 +41,7 @@
         					DE UN CLICK
         				</h1>
         			</div>
-        		</div> -->
+        		</div>
         	</div>
       	</div>
 
@@ -64,28 +64,28 @@
     <section id="SECTION">
       <section id="buscar1">
         <div id="overlay">
-          <div id="search">
             <form class="form" action="search.php" method="post">
-              <input type="text" id="buscador" name="team" value="">
+              <input type="text" id="buscador" placeholder="Nombre del equipo" name="team" value="">
+              <br>
               <select name="liga" id="competition-dropdown" id="competition">
               </select>
               <br>
-              <input type="checkbox" name="pganados" value="1" id="checkbox1"><span>Partidos ganados</span>
+              <div class="tilde"><input type="checkbox" name="pganados" value="1" id="checkbox1"><span>Partidos ganados</span></div>
               <br>
-              <input type="checkbox" name="pempatados" value="1" id="checkbox2"><span>Partidos empatados</span>
+              <div class="tilde">  <input type="checkbox" name="pempatados" value="1" id="checkbox1"><span>Partidos empatados</span></div>
               <br>
-              <input type="checkbox" name="pperdidos" value="1" id="checkbox1"><span>Partidos perdidos</span>
+              <div class="tilde">  <input type="checkbox" name="pperdidos" value="1" id="checkbox1"><span>Partidos perdidos</span></div>
               <br>
-              <input type="checkbox" name="pfinalizados" value="1" id="checkbox2"><span>Partidos finalizados</span>
+              <div class="tilde"><input type="checkbox" name="pfinalizados" value="1" id="checkbox1"><span>Partidos finalizados</span></div>
               <br>
-              <input type="checkbox" name="pnofinalizados" value="1" id="checkbox3"><span>Partidos no finalizados</span>
+              <div class="tilde"><input type="checkbox" name="pnofinalizados" value="1" id="checkbox1"><span>Partidos no finalizados</span>  </div>
+
               <br>
               <br>
               <br>
-              <input type="submit" value="Submit">
+              <input type="submit" value="Buscar">
             </form>
 
-          </div>
         </div>
       </section>
     </section>

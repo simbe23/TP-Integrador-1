@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	setBindings();
+	
 
 
 
@@ -70,16 +70,16 @@ $(document).ready(function(){
 
 
 
-  function setBindings() {
-    if (on_index == true) {
-              $("#myTopnav a").click(function(e){
-                    e.preventDefault();
-                    var sectionID = e.currentTarget.id + "1";
-                    $('body, html').animate({
-                      scrollTop: $("#" + sectionID).offset().top
-                    }, 600)
-                })
-    }};
+  // function setBindings() {
+  //   if (on_index == true) {
+  //             $("#myTopnav a").click(function(e){
+  //                   e.preventDefault();
+  //                   var sectionID = e.currentTarget.id + "1";
+  //                   $('body, html').animate({
+  //                     scrollTop: $("#" + sectionID).offset().top
+  //                   }, 600)
+  //               })
+  //   }};
 
 
 
