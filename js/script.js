@@ -1,15 +1,6 @@
 $(document).ready(function(){
 	setBindings();
 
-  $(window).scroll(function() {               //SCROLL CAMBIA COLOR HEADER
-    if ($(this).scrollTop() > 100) {
-      $('#navbar').addClass('header-scrolled');
-    } else {
-      $('#navbar').removeClass('header-scrolled');
-    }
-  });
-
-
 
 
   //Set each section's height equals to the window height     //FUNCIONES DEL SCROLL
@@ -81,7 +72,7 @@ $(document).ready(function(){
 
   function setBindings() {
     if (on_index == true) {
-              $("#navbar a").click(function(e){
+              $("#myTopnav a").click(function(e){
                     e.preventDefault();
                     var sectionID = e.currentTarget.id + "1";
                     $('body, html').animate({
@@ -105,9 +96,10 @@ $(document).ready(function(){
 			"X-Auth-Token": "caec1c63629745d684eabb0a0121f048",
 			}
 		}
-
+		var section = document.getElementById('next-matches');
 
 		$.ajax(settings).done(function (datos) {				//DEVUELVE DATOS DE PROXIMOS PARTIDOS
+
 				var pag = 1;
 				var totales = datos.count;
 				var xPag = 4;
@@ -116,7 +108,6 @@ $(document).ready(function(){
 				var hasta = pag * xPag;
 
 				function mostrarLista(desde,hasta){
-
 						var section = document.getElementById('next-matches');
 						for(var i = desde; i < hasta; i++){
 								var myBox = document.createElement ('box');
@@ -268,6 +259,23 @@ $(document).ready(function(){
 						}
 
 					}
+
+
+
+
+
+
+
 				})				//DEVUELVE LAS COMPETENCIAS PARA DROPDOWN
+
+
+
+
+
+
+
+
+
+
 
 });
