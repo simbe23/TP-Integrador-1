@@ -105,10 +105,9 @@ $(document).ready(function(){
 			"X-Auth-Token": "caec1c63629745d684eabb0a0121f048",
 			}
 		}
-		var section = document.getElementById('next-matches');
+
 
 		$.ajax(settings).done(function (datos) {				//DEVUELVE DATOS DE PROXIMOS PARTIDOS
-
 				var pag = 1;
 				var totales = datos.count;
 				var xPag = 4;
@@ -117,6 +116,7 @@ $(document).ready(function(){
 				var hasta = pag * xPag;
 
 				function mostrarLista(desde,hasta){
+
 						var section = document.getElementById('next-matches');
 						for(var i = desde; i < hasta; i++){
 								var myBox = document.createElement ('box');
@@ -260,33 +260,14 @@ $(document).ready(function(){
 							// console.log(datos2.competitions[i].name)
 
 							var option = document.createElement ('option');
-							option.textContent = datos2.competitions[i].name;
-							option.value = datos2.competitions[i].name;
 
-							dropdown.append( new Option(option.textContent,option.value) );
+							dropdown.append( new Option(datos2.competitions[i].name,datos2.competitions[i].id) );
 						//	dropdown.add(option);
 
 
 						}
 
 					}
-
-
-
-
-
-
-
 				})				//DEVUELVE LAS COMPETENCIAS PARA DROPDOWN
-
-
-			
-
-
-
-
-
-
-
 
 });
