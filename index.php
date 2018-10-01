@@ -8,30 +8,29 @@
 
     <link rel="stylesheet" type="text/css" href="css/estilos.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="js/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
   </head>
 
-  <header class="header">
-        <div id="navbar">
-          <a id="home" href="#home1">HOME</a>
-          <a id="next" href="#next1">PROXIMOS</a>
-          <a id="search" href="#search1">BUSCAR</a>
-          <a id="map" href="#map1">UBICANOS</a>
-        </div>
-
-
-    </header>
-
-
-
-
-
-
-
   <body>
+        <div  class="container-fluid" id="navbar">
+          <div class="row d-flex d-md-block flex-nowrap wrapper">
+            <div class="col-md-3 float-left col-1 pl-0 pr-0 collapse width " id="sidebar">
+              <div class="list-group border-0 card text-center text-md-left">
+          <a href="#home1" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-heart"></i> <span class="d-none d-md-inline">HOME</span></a>
+          <a id="next" href="#next1"class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-heart"></i> <span class="d-none d-md-inline">PROXIMOS</span></a>
+          <a id="search" href="#search1"class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-heart"></i> <span class="d-none d-md-inline">BUSCAR</span></a>
+          <a id="map" href="#map1"class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-heart"></i> <span class="d-none d-md-inline">UBICANOS</span></a>
+        </div>
+      </div>
+
+          <main class="col-md-9 col px-5 pl-md-2 pt-2 main mx-auto">
+            <a href="#" data-target="#sidebar" data-toggle="collapse" aria-expanded="false"><i class="fa fa-navicon fa-2x py-2 p-1"></i></a>
+        </main>
+    </div>
+  </div>
+
 
     <script type="text/javascript">
       on_index = true;
@@ -61,13 +60,11 @@
       <section id="next1">
         <div id="overlay">
           <div id="next-matches">
-            <div id="botones" class="btn-group btn-group-xs"
+            <div id="botones" class="btn-group btn-group-lg pagination pagination-lg"
                  role="group" arial-label="grupo">
             </div>
           </div>
-
         </div>
-      </div>
       </section>
     </section>
 
@@ -80,16 +77,18 @@
               <input type="text" id="buscador" name="team" value="">
               <select name="liga" id="competition-dropdown" id="competition">
               </select>
-              <br><br>
-              <input type="checkbox" name="pganados" value="1" id="checkbox">Partidos ganados
               <br>
-              <input type="checkbox" name="pempatados" value="1" id="checkbox">Partidos empatados
+              <input type="checkbox" name="pganados" value="1" id="checkbox1"><span>Partidos ganados</span>
               <br>
-              <input type="checkbox" name="pperdidos" value="1" id="checkbox">Partidos perdidos
-              <br><br>
-              <input type="checkbox" name="pfinalizados" value="1" id="checkbox">Partidos finalizados
+              <input type="checkbox" name="pempatados" value="1" id="checkbox2"><span>Partidos empatados</span>
               <br>
-              <input type="checkbox" name="pnofinalizados" value="1" id="checkbox">Partidos no finalizados
+              <input type="checkbox" name="pperdidos" value="1" id="checkbox1"><span>Partidos perdidos</span>
+              <br>
+              <input type="checkbox" name="pfinalizados" value="1" id="checkbox2"><span>Partidos finalizados</span>
+              <br>
+              <input type="checkbox" name="pnofinalizados" value="1" id="checkbox3"><span>Partidos no finalizados</span>
+              <br>
+              <br>
               <br>
               <input type="submit" value="Submit">
             </form>
