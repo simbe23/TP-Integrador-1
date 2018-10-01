@@ -101,8 +101,11 @@ function llenar (nombre,liga,pfinalizados,pnofinalizados){
    if ((pnofinalizados == '1') && (pfinalizados == '0')) {
       var url = "http://api.football-data.org/v2/competitions/"+ liga +"/matches?status=SCHEDULED"
    }
-   if ((pfinalizados == '1' && pnofinalizados == '1') || (pfinalizados == '0' && pnofinalizados == '0')) {
+   if ((pfinalizados == '1' && pnofinalizados == '1')) {
       var url = "http://api.football-data.org/v2/competitions/"+ liga +"/matches/"
+   }
+   if ((pfinalizados == '0') && pnofinalizados == '0'){
+     alert ('NO SE ENCONTRARON PARTIDOS')
    }
    console.log(url);
    var settingsLiga ={
