@@ -30,8 +30,6 @@
     </div>
   </div>
 
->>>>>>> 36bbea975812cd07dcf483c748b951195228fed5
-
     <script type="text/javascript">
       on_index = true;
     </script>
@@ -139,4 +137,3 @@
 
 
 </html>
->>>>>>> before discard
