@@ -260,10 +260,8 @@ $(document).ready(function(){
 							// console.log(datos2.competitions[i].name)
 
 							var option = document.createElement ('option');
-							option.textContent = datos2.competitions[i].name;
-							option.value = datos2.competitions[i].name;
 
-							dropdown.append( new Option(option.textContent,option.value) );
+							dropdown.append( new Option(datos2.competitions[i].name,datos2.competitions[i].id) );
 						//	dropdown.add(option);
 
 
@@ -280,7 +278,7 @@ $(document).ready(function(){
 				})				//DEVUELVE LAS COMPETENCIAS PARA DROPDOWN
 
 
-			
+
 
 
 

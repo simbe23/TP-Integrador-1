@@ -48,9 +48,46 @@
       <script>
 
       var nombre = '<?php echo $_POST["team"]; ?>'
-      nombre = nombre.toLowerCase();
+      // nombre = nombre.toLowerCase();
+      <?php if (!(isset ($_POST["liga"]))) {
+                $liga = 0;
+              }
+            else {
+              $liga = $_POST["liga"];}
+            if (!(isset ($_POST["pganados"]))) {
+                $pganados = 0;
+                    }
+            else {
+                $pganados = $_POST["pganados"];}
+            if (!(isset ($_POST["pempatados"]))) {
+                $pempatados = 0;
+                    }
+            else {
+                $pempatados = $_POST["pempatados"];}
+            if (!(isset ($_POST["pperdidos"]))) {
+                $pperdidos = 0;
+                    }
+            else {
+                $pperdidos = $_POST["pperdidos"];}
+            if (!(isset ($_POST["pfinalizados"]))) {
+                $pfinalizados = 0;
+                    }
+            else {
+                $pfinalizados = $_POST["pfinalizados"];}
+            if (!(isset ($_POST["pnofinalizados"]))) {
+                $pnofinalizados = 0;
+                    }
+            else {
+                $pnofinalizados = $_POST["pnofinalizados"];}
+    ?>
+      var liga = ('<?php echo $liga; ?>');
+      var pganados = ('<?php echo $pganados; ?>');
+      var pempatados = ('<?php echo $pganados; ?>');
+      var pperdidos = ('<?php echo $pganados; ?>');
+      var pfinalizados = ('<?php echo $pganados; ?>');
+      var pnofinalizados = ('<?php echo $pganados; ?>');
 
-      llenar(nombre)
+      llenar(nombre,liga,pganados,pempatados,pperdidos,pfinalizados,pnofinalizados)
 
 
 

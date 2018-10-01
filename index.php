@@ -77,18 +77,18 @@
           <div id="search">
             <form class="form" action="search.php" method="post">
               <input type="text" id="buscador" name="team" value="">
-              <select name="drop" id="competition-dropdown" id="competition">
+              <select name="liga" id="competition-dropdown" id="competition">
               </select>
               <br><br>
               <input type="checkbox" name="pganados" value="1" id="checkbox">Partidos ganados
               <br>
-              <input type="checkbox" name="pempatados" value="2" id="checkbox">Partidos empatados
+              <input type="checkbox" name="pempatados" value="1" id="checkbox">Partidos empatados
               <br>
-              <input type="checkbox" name="pperdidos" value="3" id="checkbox">Partidos perdidos
+              <input type="checkbox" name="pperdidos" value="1" id="checkbox">Partidos perdidos
               <br><br>
-              <input type="checkbox" name="pfinalizados" value="4" id="checkbox">Partidos finalizados
+              <input type="checkbox" name="pfinalizados" value="1" id="checkbox">Partidos finalizados
               <br>
-              <input type="checkbox" name="pnofinalizados" value="5" id="checkbox">Partidos no finalizados
+              <input type="checkbox" name="pnofinalizados" value="1" id="checkbox">Partidos no finalizados
               <br>
               <input type="submit" value="Submit">
             </form>
