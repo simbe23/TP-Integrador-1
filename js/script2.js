@@ -92,9 +92,19 @@ $(document).ready(function(){
  })
 
 
-function llenar (nombre,liga){
+function llenar (nombre,liga,pfinalizados,pnofinalizados){
  if (liga !== '0'){
-   var url = "http://api.football-data.org/v2/competitions/"+ liga +"/matches/"
+
+   if ((pfinalizados == '1') && (pnofinalizados == '0')) {
+     var url = "http://api.football-data.org/v2/competitions/"+ liga +"/matches?status=FINISHED"
+   }
+   if ((pnofinalizados == '1') && (pfinalizados == '0')) {
+      var url = "http://api.football-data.org/v2/competitions/"+ liga +"/matches?status=SCHEDULED"
+   }
+   if ((pfinalizados == '1' && pnofinalizados == '1') || (pfinalizados == '0' && pnofinalizados == '0')) {
+      var url = "http://api.football-data.org/v2/competitions/"+ liga +"/matches/"
+   }
+   console.log(url);
    var settingsLiga ={
        "async": true,
        "crossDomain": true,
@@ -199,7 +209,7 @@ function llenar (nombre,liga){
 
 else {
 
-  var settings3 = {				//CONECCION CON JSON API
+    var settings3 = {				//CONECCION CON JSON API
         "async": true,
         "crossDomain": true,
         "url": "http://api.football-data.org/v2/teams",
@@ -213,7 +223,18 @@ else {
           for (var i = 0; i < datos3.count; i++) {
              if (datos3.teams[i].name.toLowerCase().includes(nombre) == true) {
                var id = datos3.teams[i].id;
-               var url = "http://api.football-data.org/v2/teams/"+ id +"/matches/"
+              
+               if ((pfinalizados == '1') && (pnofinalizados == '0')) {
+                 var url = "http://api.football-data.org/v2/teams/"+ id +"/matches?status=FINISHED"
+               }
+               if ((pnofinalizados == '1') && (pfinalizados == '0')) {
+                  var url = "http://api.football-data.org/v2/teams/"+ id +"/matches?status=SCHEDULED"
+               }
+               if ((pfinalizados == '1' && pnofinalizados == '1') || (pfinalizados == '0' && pnofinalizados == '0')) {
+                  var url = "http://api.football-data.org/v2/teams/"+ id +"/matches/"
+               }
+               console.log(url);
+
                var settings4 = {				//CONECCION CON JSON API
                  "async": true,
                  "crossDomain": true,

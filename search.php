@@ -91,12 +91,14 @@
     ?>
       var liga = ('<?php echo $liga; ?>');
       var pganados = ('<?php echo $pganados; ?>');
-      var pempatados = ('<?php echo $pganados; ?>');
-      var pperdidos = ('<?php echo $pganados; ?>');
-      var pfinalizados = ('<?php echo $pganados; ?>');
-      var pnofinalizados = ('<?php echo $pganados; ?>');
+      var pempatados = ('<?php echo $pempatados; ?>');
+      var pperdidos = ('<?php echo $pperdidos; ?>');
+      var pfinalizados = ('<?php echo $pfinalizados; ?>');
+      var pnofinalizados = ('<?php echo $pnofinalizados; ?>');
 
-      llenar(nombre,liga,pganados,pempatados,pperdidos,pfinalizados,pnofinalizados)
+      console.log(liga,pfinalizados,pnofinalizados);
+
+      llenar(nombre,liga,pfinalizados,pnofinalizados,pganados,pempatados,pperdidos)
 
 
 
