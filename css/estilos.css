@@ -412,7 +412,7 @@ option {
   margin-top: 5%;
 }
 
-#checkbox1 {
+.checkbox1 {
   width: 30px;
   height: 30px;;
   cursor: pointer;

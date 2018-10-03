@@ -285,4 +285,16 @@ setBindings();
 
 
 
+
 });
+
+function showContent() {
+        element = document.getElementById("ocultos");
+        check = document.getElementById("mostrar");
+        if (check.checked) {
+            element.style.display='block';
+        }
+        else {
+            element.style.display='none';
+        }
+    }

@@ -133,18 +133,18 @@ function llenar (nombre,liga,pfinalizados,pnofinalizados,pganados,pempatados,ppe
           alert ('NO SE SELECCIONARON PARTIDOS GANADOS,EMPATADOS O PERDIDOS')
           filtro = [];
         }
-        // if ((pganados == '1') && (pempatados == '1') && (pperdidos !== '1')) {
-        //   filtro = filtro1.concat(filtro2);
-        // }
-        // if ((pganados == '1') && (pempatados !== '1') && (pperdidos =='1')){
-        //   filtro = filtro1.concat(filtro3);
-        // }
-        // if ((pganados !== '1') && (pempatados =='1') && (pperdidos =='1')){
-        //   filtro = filtro2.concat(filtro3);
-        // }
-        // if ((pganados == '1') && (pempatados == '1') && (pperdidos == '1')) {
-        //   filtro = filtro1.concat(filtro2,filtro3);
-        // }
+        if ((pganados == '1') && (pempatados == '1') && (pperdidos !== '1')) {
+          filtro = filtro1.concat(filtro2);
+        }
+        if ((pganados == '1') && (pempatados !== '1') && (pperdidos =='1')){
+          filtro = filtro1.concat(filtro3);
+        }
+        if ((pganados !== '1') && (pempatados =='1') && (pperdidos =='1')){
+          filtro = filtro2.concat(filtro3);
+        }
+        if ((pganados == '1') && (pempatados == '1') && (pperdidos == '1')) {
+          filtro = filtro1.concat(filtro2,filtro3);
+        }
 
                      var pag = 1;
                      var totales = filtro.length;
