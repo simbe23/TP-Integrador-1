@@ -1,6 +1,6 @@
 $(document).ready(function(){
-	
 
+setBindings();
 
 
   //Set each section's height equals to the window height     //FUNCIONES DEL SCROLL
@@ -70,16 +70,17 @@ $(document).ready(function(){
 
 
 
-  // function setBindings() {
-  //   if (on_index == true) {
-  //             $("#myTopnav a").click(function(e){
-  //                   e.preventDefault();
-  //                   var sectionID = e.currentTarget.id + "1";
-  //                   $('body, html').animate({
-  //                     scrollTop: $("#" + sectionID).offset().top
-  //                   }, 600)
-  //               })
-  //   }};
+  function setBindings() {
+    if (on_index == true) {
+              $("#myTopnav a").click(function(e){
+                    e.preventDefault();
+                    if (!$(this).hasClass('icon')){
+                      var sectionID = e.currentTarget.id + "1";
+                      $('body, html').animate({
+                        scrollTop: $("#" + sectionID).offset().top
+                      }, 600)}
+                })}
+    };
 
 
 
@@ -100,12 +101,17 @@ $(document).ready(function(){
 
 		$.ajax(settings).done(function (datos) {				//DEVUELVE DATOS DE PROXIMOS PARTIDOS
 
-				var pag = 1;
-				var totales = datos.count;
-				var xPag = 4;
-				var nPag = Math.ceil(totales / xPag)-1;
-				var offset = (pag - 1) * xPag;
-				var hasta = pag * xPag;
+            var pag = 1;
+            var totales = datos.matches.length;
+            var xPag = 4;
+           if (Math.ceil(totales % xPag) > 0) {
+                var nPag = Math.ceil(totales / xPag);
+           }
+           else {
+               var nPag = Math.ceil(totales / xPag) -1;
+           }
+            var offset = (pag - 1) * xPag;
+            var hasta = pag * xPag;
 
 				function mostrarLista(desde,hasta){
 						var section = document.getElementById('next-matches');
@@ -120,29 +126,17 @@ $(document).ready(function(){
 								$(myEquipo1).attr('id','equipo1');
 								myEquipo1.textContent = datos.matches[i].homeTeam.name;
 								myBox.appendChild(myEquipo1);
-
-
-
-								var myResul1 = document.createElement('resul1');
+	               var myResul1 = document.createElement('resul1');
 								$(myResul1).attr('id','resul1');
 								myResul1.textContent=datos.matches[i].score.fullTime.homeTeam;
 								// myResul1.textContent = '-';
 								myBox.appendChild(myResul1);
-
-
-
-								var myResul2 = document.createElement('resul2');
+                var myResul2 = document.createElement('resul2');
 								$(myResul2).attr('id','resul2');
 								myResul2.textContent=datos.matches[i].score.fullTime.awayTeam;
 								// myResul2.textContent = '-';
 								myBox.appendChild(myResul2);
-
-
-
-
-
-
-								var myEquipo2 = document.createElement ('equipo2');
+	               var myEquipo2 = document.createElement ('equipo2');
 								$(myEquipo2).attr('id','equipo2');
 								myEquipo2.textContent = datos.matches[i].awayTeam.name;
 								myBox.appendChild(myEquipo2);
@@ -155,60 +149,73 @@ $(document).ready(function(){
 								fecha = fecha + hora + hora2;
 								myFecha.textContent = fecha;
 								myBox.appendChild(myFecha);
-
-
-
-
-								section.appendChild(myBox);
+                section.appendChild(myBox);
 
 						}
 
 
-				}
-
-				function mostrarBotones(t){
-						var botones = '';
-						for(var i = 0; i < t; i++){
-								var cada = '';
-								cada = "<button type='button' "+
-										"class='btn btn-info'>"+(i+1)+
-										"</button>";
-								botones += cada;
-						}
-
-						$('#botones').append(botones);
-				}
-
-				function quitarActivo(){
-						var losBotones = document.querySelectorAll('#botones button');
-						for(var i = 0; i < losBotones.length; i++){
-								$(losBotones[i]).removeClass('active');
-						}
 				}
 
 				mostrarLista(offset,hasta);
 				mostrarBotones(nPag);
 
+          function mostrarBotones(t){
+  						var botones = '';
+  						for(var i = 0; i < t; i++){
+  								var cada = '';
+  								cada = "<button type='button' "+
+  										"class='btn btn-info'>"+(i+1)+
+  										"</button>";
+  								botones += cada;
+  						}
 
-					$('#botones').click(function(){
-						for (var i = 0; i < 4; i++) {
-							$("#box").remove();
-						}
-					});
-						// Activar el primer botón
-						$('#botones button:first-child').addClass('active');
-						// Poner oyentes a cada botón
-						var losBotones = document.querySelectorAll('#botones button');
-						for(var i = 0; i < losBotones.length; i++){
-								losBotones[i].addEventListener('click',function(){
-										quitarActivo();
-										var indice = parseInt(this.textContent);
-										var o = (indice -1) * xPag;
-										var h = indice * xPag;
-										mostrarLista(o,h);
-										$(this).addClass('active');
-								});
-						}})
+  						$('#botones').append(botones);
+  				}
+
+  				function quitarActivo(){
+  						var losBotones = document.querySelectorAll('#botones button');
+  						for(var i = 0; i < losBotones.length; i++){
+  								$(losBotones[i]).removeClass('active');
+  						}
+  				}
+
+
+          function eliminarAntiguos(indice,h){
+              if ((indice == nPag) && (h > 0)){
+                hasta = h;
+              }
+              else {
+                hasta = 4;
+              }
+              for (var i = 0; i < hasta; i++) {
+                $("#box").remove();
+              }
+            };
+
+
+            // Activar el primer botón
+            $('#botones button:first-child').addClass('active');
+            // Poner oyentes a cada botón
+            var losBotones = document.querySelectorAll('#botones button');
+            for(var i = 0; i < losBotones.length; i++){
+                losBotones[i].addEventListener('click',function(){
+                    quitarActivo();
+                    var indice = parseInt(this.textContent);
+                    var o = (indice -1) * xPag;
+                    if ((indice == nPag) && (Math.ceil(totales % xPag) > 0)){
+                      var h = o + Math.ceil(totales % xPag)
+                    }
+                    else {
+                      var h = indice * xPag;
+
+                    }
+                    eliminarAntiguos(indice,h);
+                    mostrarLista(o,h);
+                    $(this).addClass('active');
+                });
+              }
+
+						})
 
 
 			// Activar el primer botón
@@ -278,4 +285,16 @@ $(document).ready(function(){
 
 
 
+
 });
+
+function showContent() {
+        element = document.getElementById("ocultos");
+        check = document.getElementById("mostrar");
+        if (check.checked) {
+            element.style.display='block';
+        }
+        else {
+            element.style.display='none';
+        }
+    }

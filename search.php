@@ -92,8 +92,6 @@
       var pfinalizados = ('<?php echo $pfinalizados; ?>');
       var pnofinalizados = ('<?php echo $pnofinalizados; ?>');
 
-      console.log(liga,pfinalizados,pnofinalizados);
-
       llenar(nombre,liga,pfinalizados,pnofinalizados,pganados,pempatados,pperdidos)
 
 

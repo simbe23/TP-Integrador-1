@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-  	setBindings();
+  	// setBindings();
 
     $(window).scroll(function() {               //SCROLL CAMBIA COLOR HEADER
       if ($(this).scrollTop() > 100) {
@@ -92,7 +92,8 @@ $(document).ready(function(){
  })
 
 
-function llenar (nombre,liga,pfinalizados,pnofinalizados){
+function llenar (nombre,liga,pfinalizados,pnofinalizados,pganados,pempatados,pperdidos){
+  nombre=nombre.toLowerCase();
  if (liga !== '0'){
 
    if ((pfinalizados == '1') && (pnofinalizados == '0')) {
@@ -107,7 +108,6 @@ function llenar (nombre,liga,pfinalizados,pnofinalizados){
    if ((pfinalizados == '0') && pnofinalizados == '0'){
      alert ('NO SE ENCONTRARON PARTIDOS')
    }
-   console.log(url);
    var settingsLiga ={
        "async": true,
        "crossDomain": true,
@@ -118,12 +118,43 @@ function llenar (nombre,liga,pfinalizados,pnofinalizados){
        }
    }
  $.ajax(settingsLiga).done(function (datosLiga) {
-      var filtro = datosLiga.matches.filter(match => match.homeTeam.name.toLowerCase().includes(nombre) | match.awayTeam.name.toLowerCase().includes(nombre))
+      var filtro = datosLiga.matches.filter(match =>match.homeTeam.name.toLowerCase().includes(nombre) || match.awayTeam.name.toLowerCase().includes(nombre))
+
+        if ((pganados == '1') && (pnofinalizados !== '1')){
+            filtro = filtro.filter(match =>((match.homeTeam.name.toLowerCase().includes(nombre) && match.score.fullTime.homeTeam > match.score.fullTime.awayTeam) || (match.awayTeam.name.toLowerCase().includes(nombre) && match.score.fullTime.awayTeam > match.score.fullTime.homeTeam)))
+        }
+        if((pempatados == '1') && (pnofinalizados !=='1')){
+            filtro = filtro.filter(match =>(match.score.fullTime.homeTeam == match.score.fullTime.awayTeam))
+        }
+        if ((pperdidos == '1') && (pnofinalizados !=='1')) {
+            filtro = filtro.filter(match =>((match.homeTeam.name.toLowerCase().includes(nombre) && match.score.fullTime.homeTeam < match.score.fullTime.awayTeam) || (match.awayTeam.name.toLowerCase().includes(nombre) && match.score.fullTime.awayTeam < match.score.fullTime.homeTeam)))
+        }
+        if ((pganados !== '1') && (pempatados !=='1') && (pperdidos !=='1') && (pnofinalizados !== '1')) {
+          alert ('NO SE SELECCIONARON PARTIDOS GANADOS,EMPATADOS O PERDIDOS')
+          filtro = [];
+        }
+        if ((pganados == '1') && (pempatados == '1') && (pperdidos !== '1')) {
+          filtro = filtro1.concat(filtro2);
+        }
+        if ((pganados == '1') && (pempatados !== '1') && (pperdidos =='1')){
+          filtro = filtro1.concat(filtro3);
+        }
+        if ((pganados !== '1') && (pempatados =='1') && (pperdidos =='1')){
+          filtro = filtro2.concat(filtro3);
+        }
+        if ((pganados == '1') && (pempatados == '1') && (pperdidos == '1')) {
+          filtro = filtro1.concat(filtro2,filtro3);
+        }
 
                      var pag = 1;
                      var totales = filtro.length;
                      var xPag = 4;
-                     var nPag = Math.ceil(totales / xPag)-1;
+                    if (Math.ceil(totales % xPag) > 0) {
+                         var nPag = Math.ceil(totales / xPag);
+                    }
+                    else {
+                        var nPag = Math.ceil(totales / xPag) -1;
+                    }
                      var offset = (pag - 1) * xPag;
                      var hasta = pag * xPag;
 
@@ -185,15 +216,10 @@ function llenar (nombre,liga,pfinalizados,pnofinalizados){
                               $(losBotones[i]).removeClass('active');
                           }
                       }
-
                       mostrarLista(offset,hasta);
                       mostrarBotones(nPag);
 
-                      $('#botones').click(function(){
-                        for (var i = 0; i < 4; i++) {
-                          $("#box").remove();
-                        }
-                      });
+
                         // Activar el primer botón
                         $('#botones button:first-child').addClass('active');
                         // Poner oyentes a cada botón
@@ -203,11 +229,30 @@ function llenar (nombre,liga,pfinalizados,pnofinalizados){
                                 quitarActivo();
                                 var indice = parseInt(this.textContent);
                                 var o = (indice -1) * xPag;
-                                var h = indice * xPag;
+                                if ((indice == nPag) && (Math.ceil(totales % xPag) > 0)){
+                                  var h = o + Math.ceil(totales % xPag)
+                                }
+                                else {
+                                  var h = indice * xPag;
+
+                                }
+                                eliminarAntiguos(indice,h);
                                 mostrarLista(o,h);
                                 $(this).addClass('active');
                             });
-}
+                          }
+
+                        function eliminarAntiguos(indice,h){
+                            if ((indice == nPag) && (h > 0)){
+                              hasta = h;
+                            }
+                            else {
+                              hasta = 4;
+                            }
+                            for (var i = 0; i < hasta; i++) {
+                              $("#box").remove();
+                            }
+                          };
 })}
 
 else {
@@ -236,7 +281,6 @@ else {
                if ((pfinalizados == '1' && pnofinalizados == '1') || (pfinalizados == '0' && pnofinalizados == '0')) {
                   var url = "http://api.football-data.org/v2/teams/"+ id +"/matches/"
                }
-               console.log(url);
 
                var settings4 = {				//CONECCION CON JSON API
                  "async": true,

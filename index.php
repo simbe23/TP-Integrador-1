@@ -70,16 +70,17 @@
               <select name="liga" id="competition-dropdown" id="competition">
               </select>
               <br>
-              <div class="tilde"><input type="checkbox" name="pganados" value="1" id="checkbox1"><span>Partidos ganados</span></div>
+              <div class="tilde"><input type="checkbox" name="pfinalizados" value="1" class="checkbox1" id="mostrar" onchange="javascript:showContent()"><span>Partidos finalizados</span></div>
               <br>
-              <div class="tilde">  <input type="checkbox" name="pempatados" value="1" id="checkbox1"><span>Partidos empatados</span></div>
-              <br>
-              <div class="tilde">  <input type="checkbox" name="pperdidos" value="1" id="checkbox1"><span>Partidos perdidos</span></div>
-              <br>
-              <div class="tilde"><input type="checkbox" name="pfinalizados" value="1" id="checkbox1"><span>Partidos finalizados</span></div>
-              <br>
-              <div class="tilde"><input type="checkbox" name="pnofinalizados" value="1" id="checkbox1"><span>Partidos no finalizados</span>  </div>
-
+              <div class="tilde"><input type="checkbox" name="pnofinalizados" value="1" class="checkbox1"><span>Partidos no finalizados</span>  </div>
+              <div id="ocultos" style="display: none;">
+                <div class="tilde"><input type="checkbox" name="pganados" value="1" class="checkbox1" ><span>Partidos ganados</span></div>
+                <br>
+                <div class="tilde">  <input type="checkbox" name="pempatados" value="1" class="checkbox1"><span>Partidos empatados</span></div>
+                <br>
+                <div class="tilde">  <input type="checkbox" name="pperdidos" value="1" class="checkbox1"><span>Partidos perdidos</span></div>
+                <br>
+              </div>
               <br>
               <br>
               <br>
