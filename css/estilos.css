@@ -109,9 +109,9 @@ html, body {
     background: rgba(0, 0, 0, 0) url(../img/hazard.png) repeat scroll 50% 50% / cover padding-box border-box;
 }
 
-#botones{z-index: 100;
+#botones{
 
-top: 550px;}
+top: 612px;}
 
 #overlay {
     top:0px;
@@ -364,6 +364,7 @@ color: white;}
   bottom: -10%;
   left:30%;
   z-index:-500;
+  top: 612px;
 }
 
 #search {
@@ -525,8 +526,6 @@ body {overflow-y: hidden;}
 #buscar1 {
     background: rgba(0, 0, 0, 0) url(../img/background3.jpg) repeat scroll 50% 50% / cover padding-box border-box;
 }
-
-#botones{z-index: 100;}
 
 #overlay {
     top:0px;
@@ -778,6 +777,7 @@ color: white;}
   bottom: -10%;
   left:45%;
   z-index:-500;
+  top: 612px;
 }
 
 #search {

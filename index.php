@@ -55,6 +55,11 @@
             <div id="botones" class="btn-group btn-group-lg pagination pagination-lg"
                  role="group" arial-label="grupo">
             </div>
+                                 <div id="share-buttons">
+                      <a href="email.php" target="_blank">
+                        <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
+                  </a>
+                </div>
           </div>
         </div>
       </section>
