@@ -108,6 +108,7 @@ function llenar (nombre,liga,pfinalizados,pnofinalizados,pganados,pempatados,ppe
    if ((pfinalizados == '0') && pnofinalizados == '0'){
      alert ('NO SE ENCONTRARON PARTIDOS')
    }
+   console.log(url);
    var settingsLiga ={
        "async": true,
        "crossDomain": true,
@@ -120,31 +121,50 @@ function llenar (nombre,liga,pfinalizados,pnofinalizados,pganados,pempatados,ppe
  $.ajax(settingsLiga).done(function (datosLiga) {
       var filtro = datosLiga.matches.filter(match =>match.homeTeam.name.toLowerCase().includes(nombre) || match.awayTeam.name.toLowerCase().includes(nombre))
 
-        if ((pganados == '1') && (pnofinalizados !== '1')){
+        if ((pganados == '1') && (pnofinalizados !== '1') && (pempatados !== '1') && (pperdidos !== '1')){
             filtro = filtro.filter(match =>((match.homeTeam.name.toLowerCase().includes(nombre) && match.score.fullTime.homeTeam > match.score.fullTime.awayTeam) || (match.awayTeam.name.toLowerCase().includes(nombre) && match.score.fullTime.awayTeam > match.score.fullTime.homeTeam)))
         }
-        if((pempatados == '1') && (pnofinalizados !=='1')){
+        if((pempatados == '1') && (pnofinalizados !=='1') && (pganados !== '1') && (pperdidos !== '1')){
             filtro = filtro.filter(match =>(match.score.fullTime.homeTeam == match.score.fullTime.awayTeam))
         }
-        if ((pperdidos == '1') && (pnofinalizados !=='1')) {
+        if ((pperdidos == '1') && (pnofinalizados !=='1') && (pganados !== '1') && (pempatados !== '1')) {
             filtro = filtro.filter(match =>((match.homeTeam.name.toLowerCase().includes(nombre) && match.score.fullTime.homeTeam < match.score.fullTime.awayTeam) || (match.awayTeam.name.toLowerCase().includes(nombre) && match.score.fullTime.awayTeam < match.score.fullTime.homeTeam)))
         }
         if ((pganados !== '1') && (pempatados !=='1') && (pperdidos !=='1') && (pnofinalizados !== '1')) {
           alert ('NO SE SELECCIONARON PARTIDOS GANADOS,EMPATADOS O PERDIDOS')
           filtro = [];
         }
-        if ((pganados == '1') && (pempatados == '1') && (pperdidos !== '1')) {
-          filtro = filtro1.concat(filtro2);
+        if ((pganados == '1') && (pperdidos == '1') && (pempatados !== '1') && (pnofinalizados !== '1')) {
+            filtro = filtro.filter(match =>(match.score.fullTime.homeTeam !== match.score.fullTime.awayTeam))
         }
-        if ((pganados == '1') && (pempatados !== '1') && (pperdidos =='1')){
-          filtro = filtro1.concat(filtro3);
+        if ((pganados == '1') && (pperdidos !== '1') && (pempatados == '1') && (pnofinalizados !== '1')) {
+            filtro = filtro.filter(match =>!((match.homeTeam.name.toLowerCase().includes(nombre) && match.score.fullTime.homeTeam < match.score.fullTime.awayTeam) || (match.awayTeam.name.toLowerCase().includes(nombre) && match.score.fullTime.awayTeam < match.score.fullTime.homeTeam)))
         }
-        if ((pganados !== '1') && (pempatados =='1') && (pperdidos =='1')){
-          filtro = filtro2.concat(filtro3);
+        if ((pganados !== '1') && (pperdidos == '1') && (pempatados == '1') && (pnofinalizados !== '1')) {
+            filtro = filtro.filter(match =>!((match.homeTeam.name.toLowerCase().includes(nombre) && match.score.fullTime.homeTeam > match.score.fullTime.awayTeam) || (match.awayTeam.name.toLowerCase().includes(nombre) && match.score.fullTime.awayTeam > match.score.fullTime.homeTeam)))
         }
-        if ((pganados == '1') && (pempatados == '1') && (pperdidos == '1')) {
-          filtro = filtro1.concat(filtro2,filtro3);
+        if ((pganados == '1') && (pperdidos !== '1') && (pempatados !== '1') && (pnofinalizados == '1')) {
+            filtro = filtro.filter(match =>((match.homeTeam.name.toLowerCase().includes(nombre) && match.score.winner == "HOME_TEAM") || (match.awayTeam.name.toLowerCase().includes(nombre) && match.score.winner == "AWAY_TEAM") || (match.score.winner == null)));
         }
+        if ((pganados !== '1') && (pperdidos == '1') && (pempatados !== '1') && (pnofinalizados == '1')) {
+            filtro = filtro.filter(match =>((match.homeTeam.name.toLowerCase().includes(nombre) && match.score.winner == "AWAY_TEAM") || (match.awayTeam.name.toLowerCase().includes(nombre) && match.score.winner == "HOME_TEAM") || (match.score.winner == null)))
+        }
+        if ((pganados == '1') && (pperdidos == '1') && (pempatados !== '1') && (pnofinalizados == '1')) {
+            filtro = filtro.filter(match => ((match.score.winner !== "DRAW") || (match.score.winner == null)))
+        }
+        if ((pganados !== '1') && (pperdidos !== '1') && (pempatados == '1') && (pnofinalizados == '1')) {
+            filtro = filtro.filter(match => ((match.score.winner == "DRAW") || (match.score.winner == null)))
+        }
+        if ((pganados == '1') && (pperdidos !== '1') && (pempatados == '1') && (pnofinalizados == '1')) {
+            filtro = filtro.filter(match =>((match.homeTeam.name.toLowerCase().includes(nombre) && match.score.winner !== "AWAY_TEAM") || (match.awayTeam.name.toLowerCase().includes(nombre) && match.score.winner !== "HOME_TEAM") || (match.score.winner == null)))
+        }
+        if ((pganados !== '1') && (pperdidos == '1') && (pempatados == '1') && (pnofinalizados == '1')) {
+            filtro = filtro.filter(match =>((match.homeTeam.name.toLowerCase().includes(nombre) && match.score.winner !== "HOME_TEAM") || (match.awayTeam.name.toLowerCase().includes(nombre) && match.score.winner !== "AWAY_TEAM") || (match.score.winner == null)))
+        }
+
+        // console.log("equipo",nombre,"liga",liga,"finalizados",pfinalizados,"no finalizados",pnofinalizados,"ganados",pganados,"empatados",pempatados,"perdidos",pperdidos);
+        // console.log(filtro);
+
 
                      var pag = 1;
                      var totales = filtro.length;
@@ -293,12 +313,70 @@ else {
                }
 
                 $.ajax(settings4).done(function (datos4) {
-                         var pag = 1;
-                         var totales = datos4.count;
-                         var xPag = 4;
-                         var nPag = Math.ceil(totales / xPag)-1;
-                         var offset = (pag - 1) * xPag;
-                         var hasta = pag * xPag;
+
+
+                    if ((pganados == '1') && (pnofinalizados !== '1') && (pempatados !== '1') && (pperdidos !== '1')){
+                        datos4.matches = datos4.matches.filter(match =>((match.homeTeam.name.toLowerCase().includes(nombre) && match.score.fullTime.homeTeam > match.score.fullTime.awayTeam) || (match.awayTeam.name.toLowerCase().includes(nombre) && match.score.fullTime.awayTeam > match.score.fullTime.homeTeam)))
+                    }
+                    if((pempatados == '1') && (pnofinalizados !=='1') && (pganados !== '1') && (pperdidos !== '1')){
+                        datos4.matches = datos4.matches.filter(match =>(match.score.fullTime.homeTeam == match.score.fullTime.awayTeam))
+                    }
+                    if ((pperdidos == '1') && (pnofinalizados !=='1') && (pganados !== '1') && (pempatados !== '1')) {
+                        datos4.matches = datos4.matches.filter(match =>((match.homeTeam.name.toLowerCase().includes(nombre) && match.score.fullTime.homeTeam < match.score.fullTime.awayTeam) || (match.awayTeam.name.toLowerCase().includes(nombre) && match.score.fullTime.awayTeam < match.score.fullTime.homeTeam)))
+                    }
+                    if ((pganados !== '1') && (pempatados !=='1') && (pperdidos !=='1') && (pnofinalizados !== '1')) {
+                      alert ('NO SE SELECCIONARON PARTIDOS GANADOS,EMPATADOS O PERDIDOS')
+                      filtro = [];
+                    }
+                    if ((pganados == '1') && (pperdidos == '1') && (pempatados !== '1') && (pnofinalizados !== '1')) {
+                        datos4.matches = datos4.matches.filter(match =>(match.score.fullTime.homeTeam !== match.score.fullTime.awayTeam))
+                    }
+                    if ((pganados == '1') && (pperdidos !== '1') && (pempatados == '1') && (pnofinalizados !== '1')) {
+                        datos4.matches = datos4.matches.filter(match =>!((match.homeTeam.name.toLowerCase().includes(nombre) && match.score.fullTime.homeTeam < match.score.fullTime.awayTeam) || (match.awayTeam.name.toLowerCase().includes(nombre) && match.score.fullTime.awayTeam < match.score.fullTime.homeTeam)))
+                    }
+                    if ((pganados !== '1') && (pperdidos == '1') && (pempatados == '1') && (pnofinalizados !== '1')) {
+                        datos4.matches = datos4.matches.filter(match =>!((match.homeTeam.name.toLowerCase().includes(nombre) && match.score.fullTime.homeTeam > match.score.fullTime.awayTeam) || (match.awayTeam.name.toLowerCase().includes(nombre) && match.score.fullTime.awayTeam > match.score.fullTime.homeTeam)))
+                    }
+                    if ((pganados == '1') && (pperdidos !== '1') && (pempatados !== '1') && (pnofinalizados == '1')) {
+                        datos4.matches = datos4.matches.filter(match =>((match.homeTeam.name.toLowerCase().includes(nombre) && match.score.winner == "HOME_TEAM") || (match.awayTeam.name.toLowerCase().includes(nombre) && match.score.winner == "AWAY_TEAM") || (match.score.winner == null)));
+                    }
+                    if ((pganados !== '1') && (pperdidos == '1') && (pempatados !== '1') && (pnofinalizados == '1')) {
+                        datos4.matches = datos4.matches.filter(match =>((match.homeTeam.name.toLowerCase().includes(nombre) && match.score.winner == "AWAY_TEAM") || (match.awayTeam.name.toLowerCase().includes(nombre) && match.score.winner == "HOME_TEAM") || (match.score.winner == null)))
+                    }
+                    if ((pganados == '1') && (pperdidos == '1') && (pempatados !== '1') && (pnofinalizados == '1')) {
+                        datos4.matches = datos4.matches.filter(match => ((match.score.winner !== "DRAW") || (match.score.winner == null)))
+                    }
+                    if ((pganados !== '1') && (pperdidos !== '1') && (pempatados == '1') && (pnofinalizados == '1')) {
+                        datos4.matches = datos4.matches.filter(match => ((match.score.winner == "DRAW") || (match.score.winner == null)))
+                    }
+                    if ((pganados == '1') && (pperdidos !== '1') && (pempatados == '1') && (pnofinalizados == '1')) {
+                        datos4.matches = datos4.matches.filter(match =>((match.homeTeam.name.toLowerCase().includes(nombre) && match.score.winner !== "AWAY_TEAM") || (match.awayTeam.name.toLowerCase().includes(nombre) && match.score.winner !== "HOME_TEAM") || (match.score.winner == null)))
+                    }
+                    if ((pganados !== '1') && (pperdidos == '1') && (pempatados == '1') && (pnofinalizados == '1')) {
+                        datos4.matches = datos4.matches.filter(match =>((match.homeTeam.name.toLowerCase().includes(nombre) && match.score.winner !== "HOME_TEAM") || (match.awayTeam.name.toLowerCase().includes(nombre) && match.score.winner !== "AWAY_TEAM") || (match.score.winner == null)))
+                    }
+
+                    // console.log(datos4);
+                    // console.log(datos4.matches);
+                    // console.log(datos4.matches.length);
+
+                    var pag = 1;
+                    var totales = datos4.matches.length;
+                    var xPag = 4;
+                   if (Math.ceil(totales % xPag) > 0) {
+                        var nPag = Math.ceil(totales / xPag);
+                   }
+                   else {
+                       var nPag = Math.ceil(totales / xPag) -1;
+                   }
+                    var offset = (pag - 1) * xPag;
+                    var hasta = pag * xPag;
+                         // var pag = 1;
+                         // var totales = datos4.matches.length;
+                         // var xPag = 4;                             CAMBIAR ESTO!!!
+                         // var nPag = Math.ceil(totales / xPag)-1;
+                         // var offset = (pag - 1) * xPag;
+                         // var hasta = pag * xPag;
 
                          function mostrarLista(desde,hasta){
                              var section = document.getElementById('next-matches');
