@@ -6,11 +6,11 @@
    if (isset($_POST['submit'])) {
       //Obtenemos valores input formulario
       $nombre1 = $_POST['name'];
-      $email1 = $_POST['emaile'];   
+      $email1 = $_POST['emaile'];
       $para = $_POST['emaild'];
       $subject = 'Aca van todos los partidos, miralo';
 
-      $msjCorreo = '<img src="1.jpg">' ;  
+      $msjCorreo = '<img src="C:\wamp64\www\TP-Integrador-1\1.jpg">' ;
 
 
     if (mail($para, $subject, $msjCorreo)) {
