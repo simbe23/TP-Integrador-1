@@ -32,13 +32,13 @@
             <div id="overlay">
               <div id="next-matches">
           <section>
-              <form class="form" action="email.php" method="post">
-              <input type="text" id="buscador" placeholder="Email Emisor" name="team" value="">
+              <form action="enviar.php" method="post" name="form" class="form">
+              <input type="text" id="buscador" placeholder="Email Emisor" name="emaile" value="">
               <br>
-              <input type="text" id="buscador" placeholder="Email Destino" name="team" value="">
+              <input type="text" id="buscador" placeholder="Email Destino" name="emaild" value="">
               <br>
-              <input type="text" id="buscador" placeholder="Nombre y Apellido" name="team" value="">
-              <input type="submit" value="Enviar email">
+              <input type="text" id="buscador" placeholder="Nombre y Apellido" name="name" value="">
+              <input type="submit" name="submit" value="Enviar email">
             </form>
           </section>
               </div>
