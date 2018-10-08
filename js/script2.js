@@ -130,10 +130,10 @@ function llenar (nombre,liga,pfinalizados,pnofinalizados,pganados,pempatados,ppe
         if ((pperdidos == '1') && (pnofinalizados !=='1') && (pganados !== '1') && (pempatados !== '1')) {
             filtro = filtro.filter(match =>((match.homeTeam.name.toLowerCase().includes(nombre) && match.score.fullTime.homeTeam < match.score.fullTime.awayTeam) || (match.awayTeam.name.toLowerCase().includes(nombre) && match.score.fullTime.awayTeam < match.score.fullTime.homeTeam)))
         }
-        if ((pganados !== '1') && (pempatados !=='1') && (pperdidos !=='1') && (pnofinalizados !== '1')) {
-          alert ('NO SE SELECCIONARON PARTIDOS GANADOS,EMPATADOS O PERDIDOS')
-          filtro = [];
-        }
+        // if ((pganados !== '1') && (pempatados !=='1') && (pperdidos !=='1') && (pnofinalizados !== '1')) {
+        //
+        //
+        // }
         if ((pganados == '1') && (pperdidos == '1') && (pempatados !== '1') && (pnofinalizados !== '1')) {
             filtro = filtro.filter(match =>(match.score.fullTime.homeTeam !== match.score.fullTime.awayTeam))
         }
@@ -329,7 +329,7 @@ else {
                       filtro = [];
                     }
                     if ((pganados == '1') && (pperdidos == '1') && (pempatados !== '1') && (pnofinalizados !== '1')) {
-                        datos4.matches = datos4.matches.filter(match =>(match.score.fullTime.homeTeam !== match.score.fullTime.awayTeam))
+                        datos4.matches = datos4.matches.filter(match =>(match.score.winner !== "DRAW"))
                     }
                     if ((pganados == '1') && (pperdidos !== '1') && (pempatados == '1') && (pnofinalizados !== '1')) {
                         datos4.matches = datos4.matches.filter(match =>!((match.homeTeam.name.toLowerCase().includes(nombre) && match.score.fullTime.homeTeam < match.score.fullTime.awayTeam) || (match.awayTeam.name.toLowerCase().includes(nombre) && match.score.fullTime.awayTeam < match.score.fullTime.homeTeam)))
@@ -356,7 +356,7 @@ else {
                         datos4.matches = datos4.matches.filter(match =>((match.homeTeam.name.toLowerCase().includes(nombre) && match.score.winner !== "HOME_TEAM") || (match.awayTeam.name.toLowerCase().includes(nombre) && match.score.winner !== "AWAY_TEAM") || (match.score.winner == null)))
                     }
 
-                    // console.log(datos4);
+                    console.log(datos4);
                     // console.log(datos4.matches);
                     // console.log(datos4.matches.length);
 

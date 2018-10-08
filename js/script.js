@@ -291,7 +291,7 @@ setBindings();
 function showContent() {
         element = document.getElementById("ocultos");
         check = document.getElementById("mostrar");
-        if (check.checked) {
+        if ((check.checked) && (document.getElementById("buscador").value !== "")) {
             element.style.display='block';
         }
         else {
