@@ -38,6 +38,9 @@
               <input type="text" id="buscador" placeholder="Email Destino" name="emaild" value="">
               <br>
               <input type="text" id="buscador" placeholder="Nombre y Apellido" name="name" value="">
+              <br>
+              <input type="file" name="fileToUpload" id="fileToUpload">
+              <br>
               <input type="submit" name="submit" value="Enviar email">
             </form>
           </section>

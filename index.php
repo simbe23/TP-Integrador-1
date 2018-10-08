@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="js/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/html2canvas.js"></script>
   </head>
 
   <body>
@@ -118,7 +119,7 @@
 
     <script type="text/javascript">
     function initMap() {                                  //INICIALIZA MAPA
-    var myLatLng = {lat: -34.904105, lng: -57.925242};
+    var myLatLng = {lat: -34.922828800, lng: -57.956255500};
 
 
     var map = new google.maps.Map(document.getElementById('map1'), {
