@@ -33,11 +33,14 @@
               <div id="next-matches">
           <section>
               <form action="enviar.php" method="post" name="form" class="form">
-              <input type="text" id="buscador" placeholder="Email Emisor" name="emaile" value="">
+              <input type="text" id="buscador" placeholder="Email Emisor" name="emaile" value="" required="">
               <br>
-              <input type="text" id="buscador" placeholder="Email Destino" name="emaild" value="">
+              <input type="text" id="buscador" placeholder="Email Destino" name="emaild" value="" required="">
               <br>
               <input type="text" id="buscador" placeholder="Nombre y Apellido" name="name" value="">
+              <br>
+              <img src="1.jpg" id="screenshot" style="width: 35%; height: 20%; border:4px;">
+              <br>
               <input type="submit" name="submit" value="Enviar email">
             </form>
           </section>

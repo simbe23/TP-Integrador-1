@@ -7,17 +7,13 @@
       //Obtenemos valores input formulario
       $nombre1 = $_POST['name'];
       $email1 = $_POST['emaile'];   
-      $para = $_POST['emaild']; 
+      $para = $_POST['emaild'];
+      $subject = 'Aca van todos los partidos, miralo';
 
-      //Componemos cuerpo correo.
-      $msjCorreo = "Nombre: " . $nombre;
-      $msjCorreo .= "\r\n";
-      $msjCorreo .= "Email: " . $email1;
-      $msjCorreo .= "\r\n";
-      $msjCorreo .= "Mensaje: " . $nombre;
-      $msjCorreo .= "\r\n";
+      $msjCorreo = '<img src="1.jpg">' ;  
 
-    if (mail($para, $email1, $nombre1)) {
+
+    if (mail($para, $subject, $msjCorreo)) {
          echo "<script language='javascript'>
             alert('Mensaje enviado, muchas gracias.');
          </script>";

@@ -463,6 +463,12 @@ input[type="submit"] {
     z-index:10;
 }
 
+#screenshot img {
+  height: 15%;
+  width: 15%;
+  clear: both;
+
+}
 
 #navbar a {
     float: left;

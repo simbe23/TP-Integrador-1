@@ -11,6 +11,28 @@
 
     <script src="js/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="js/script2.js"></script>
+    <script type="text/javascript" src="js/html2canvas.js"></script>
+    <script type="text/javascript" src="js/filesaver.js"></script>
+
+<script type="text/javascript">                         
+function getScreen() {
+html2canvas(document.body).then(function(canvas) {
+    // Export canvas as a blob 
+    canvas.toBlob(function(blob) {
+        // Generate file download
+                 var imgData = canvas.toDataURL('image/png');
+          $.ajax({
+            url: 'save.php',
+            type:'post',
+            dataType:'text',
+            data: {
+              base64data:imgData
+            }
+          });
+    });
+});
+}  
+</script>
   </head>
 
 
@@ -39,9 +61,14 @@
         <section id="SECTION">
           <section id="next1">
             <div id="overlay">
-              <div id="next-matches">
+              <div id="next-matches" name="next-matches">
                 <div id="botones" class="btn-group btn-group-xs"
                      role="group" arial-label="grupo">
+                  <div id="share-buttons">
+                      <a href="email.php" onclick="getScreen()" name="blank" target="_blank">
+                        <img src="https://simplesharebuttons.com/images/somacro/email.png" alt="Email" />
+                  </a>
+                </div>
                 </div>
               </div>
 
@@ -92,12 +119,7 @@
       var pfinalizados = ('<?php echo $pfinalizados; ?>');
       var pnofinalizados = ('<?php echo $pnofinalizados; ?>');
 
-      llenar(nombre,liga,pfinalizados,pnofinalizados,pganados,pempatados,pperdidos)
+      llenar(nombre,liga,pfinalizados,pnofinalizados,pganados,pempatados,pperdidos);
+    </script>
 
-
-
-
-
-
-      </script>
         </html>
