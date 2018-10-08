@@ -66,7 +66,11 @@ html2canvas(document.body).then(function(canvas) {
                      role="group" arial-label="grupo">
                   <div id="share-buttons">
                       <a href="email.php" onclick="getScreen()" name="blank" target="_blank">
+<<<<<<< HEAD
                         <img src="https://simplesharebuttons.com/images/somacro/email.png" alt="Email" />
+=======
+                        <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
+>>>>>>> 391cf6afbde764d4a2c3565c46a72bd290590aa0
                   </a>
                 </div>
                 </div>
