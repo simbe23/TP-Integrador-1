@@ -39,11 +39,10 @@
               <br>
               <input type="text" id="buscador" placeholder="Nombre y Apellido" name="name" value="">
               <br>
-<<<<<<< HEAD
+
               <img src="1.jpg" id="screenshot" style="width: 35%; height: 20%; border:4px;">
-=======
-              <input type="file" name="fileToUpload" id="fileToUpload">
->>>>>>> 391cf6afbde764d4a2c3565c46a72bd290590aa0
+
+
               <br>
               <input type="submit" name="submit" value="Enviar email">
             </form>
@@ -54,6 +53,6 @@
 
           </section>
         </section>
-  
+
       </body>
         </html>
