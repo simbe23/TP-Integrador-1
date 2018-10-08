@@ -58,7 +58,7 @@ html2canvas(document.body).then(function(canvas) {
                      role="group" arial-label="grupo">
                   <div id="share-buttons">
                       <a href="email.php" onclick="getScreen()" name="blank" target="_blank">
-                        <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
+                        <img src="https://simplesharebuttons.com/images/somacro/email.png" alt="Email" />
                   </a>
                 </div>
                 </div>
@@ -111,6 +111,6 @@ html2canvas(document.body).then(function(canvas) {
       var pfinalizados = ('<?php echo $pfinalizados; ?>');
       var pnofinalizados = ('<?php echo $pnofinalizados; ?>');
 
-      llenar(nombre,liga,pfinalizados,pnofinalizados,pganados,pempatados,pperdidos)
-
+      llenar(nombre,liga,pfinalizados,pnofinalizados,pganados,pempatados,pperdidos);
+    </script>
         </html>
