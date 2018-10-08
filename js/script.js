@@ -91,7 +91,7 @@ setBindings();
 		var settings = {				//CONECCION CON JSON API PARA PROXIMOS PARTIDOS
 			"async": true,
 			"crossDomain": true,
-			"url": "http://api.football-data.org/v2/matches",
+			"url": "https://api.football-data.org/v2/competitions/PL/matches?matchday=9",
 			"method": "GET",
 			"headers": {
 			"X-Auth-Token": "caec1c63629745d684eabb0a0121f048",
@@ -100,7 +100,6 @@ setBindings();
 		var section = document.getElementById('next-matches');
 
 		$.ajax(settings).done(function (datos) {				//DEVUELVE DATOS DE PROXIMOS PARTIDOS
-
             var pag = 1;
             var totales = datos.matches.length;
             var xPag = 4;
@@ -120,7 +119,7 @@ setBindings();
 								$(myBox).attr('id','box');
 								var myLiga = document.createElement ('liga');
 								$(myLiga).attr('id','liga');
-								myLiga.textContent = datos.matches[i].competition.name;
+								myLiga.textContent = datos.competition.name;
 								myBox.appendChild(myLiga);
 								var myEquipo1 = document.createElement ('equipo1');
 								$(myEquipo1).attr('id','equipo1');

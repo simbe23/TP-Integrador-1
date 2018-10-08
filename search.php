@@ -45,10 +45,10 @@ html2canvas(document.body).then(function(canvas) {
 
       <body>
         <div class="topnav" id="myTopnav">
-          <a href="#home1" id="home" class="active">Home</a>
-          <a href="#next1" id="next">Proximos</a>
-          <a href="#buscar1" id="buscar">Buscar</a>
-          <a href="#map1" id="map">Contacto</a>
+          <a href="index.php" id="home" class="active">Home</a>
+          <a href="index.php" id="next">Proximos</a>
+          <a href="index.php" id="buscar">Buscar</a>
+          <a href="index.php" id="map">Contacto</a>
           <a href="javascript:void(0);" class="icon" onclick="expandir()">
             <i class="fa fa-bars"></i>
           </a>
